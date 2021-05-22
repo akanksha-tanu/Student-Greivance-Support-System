@@ -1,3 +1,6 @@
+if(process.env.NODE_ENV !=="production"){
+    require('dotenv').config();
+}
 var express=require("express");
 var app=express();
 var bodyParser=require("body-parser");
@@ -11,7 +14,7 @@ app.set("view engine","ejs")
 var mongoose=require("mongoose"); 
 // const { isBuffer } = require("util");
 
-mongoose.connect("mongodb://localhost/projectdb",{
+mongoose.connect(process.env.DB_URL || "mongodb://localhost/projectdb",{
     useNewUrlParser:true,
     useUnifiedTopology:true
 })
@@ -429,9 +432,11 @@ app.get("/complaint/new/:name/:usn",(req,res)=>{
 
 
 
-
-app.listen(5000,()=>{
-    console.log("Project server has started");
+const port=process.env.PORT || 5000;
+app.listen(port,()=>{
+    console.log("Project server has started at port" +port);
 })
 
 app.use(express.static(__dirname + '/public'));
+
+// mongodb+srv://user1:<password>@cluster0.tq42b.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
