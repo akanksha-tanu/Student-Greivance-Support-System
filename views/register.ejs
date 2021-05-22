@@ -1,0 +1,37 @@
+<%- include("partials/header") %>
+<title>Register</title>
+<link rel="stylesheet" type="text/css" href="/css/register.css">
+</head>
+<body>
+    
+    <div class="form">
+        
+        <form action="/register" method="POST">
+            <div>
+                <h1>STUDENT REGISTRATION</h1>
+            </div>
+            <hr>
+            <div>
+                <label for="user" class="label">NAME : </label>
+                <br>
+                  <input id="user" type="text" class="input" name="name" autocomplete="off">
+            </div>
+            <div>
+                <label for="user" class="label">USN : </label>
+                <br>
+                  <input id="usn" type="text" class="input" name="usn" autocomplete="off">
+            </div>
+            <div class="group">
+                <label for="pass" class="label">Password : </label>
+                <br>
+                <input id="pass" type="password" class="input" data-type="password" name="password" autocomplete="off">
+            </div>
+            <hr>
+            <div class="group">
+                <input type="submit" class="button" value="Sign In">
+              </div>
+
+        </form>
+    </div>
+
+<%- include("partials/footer") %>

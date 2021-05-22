@@ -1,0 +1,89 @@
+<%- include("partials/header") %>
+
+    <title>Complaint Form</title>
+    <link rel="stylesheet" type="text/css" href="/css/complaint.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+<body>
+    <!-- <h1>hello this is complaint registration page</h1> -->
+    <div class="testbox">
+        <form action="/complaint" method="POST">
+          <div id="top">
+            <h1>Complaint Form</h1>
+            <hr id="white"/>
+            <p>Please send us details about the incident you would like to report. Our Complaint Center will analyze your complaint and take the appropriate measures in order that the reported situation will not occur at any other time in the future.</p>
+          </div>
+
+          <hr/>
+
+          <div class="item">
+            <p>Date of complaint</p>
+            <input type="date" name="date" required />
+            <i class="fas fa-calendar-alt"></i>
+          </div>
+
+          <div class="item">
+            <p>USN</p>
+            <input type="text" name="usn" value="<%=usn%>" required style="cursor:not-allowed;"/>
+          </div>
+
+          <div class="item">
+            <p>Name</p>
+            <input type="text" name="name" value="<%=name%>" placeholder="Full name" required style="cursor:not-allowed;"/>
+            <!-- <input type="text" name="lname" placeholder="Last" /> -->
+          </div>
+
+          <div class="item">
+            <p>Email</p>
+            <input type="text" name="email" required/>
+          </div>
+
+          <div class="item">
+            <p>Category</p>
+            <!-- <input type="text" name="title" /> -->
+            <select name="cid">
+              <option value="1">Academics</option>
+              <option value="2">Transport</option>
+              <option value="3">Fees</option>
+              <option value="4">Hostel</option>
+              <option value="5">Ragging</option>
+              <option value="6">Mess</option>
+            </select>            
+          </div>
+
+          <div class="item">
+            <p>Date of the reported incident</p>
+            <input type="date" name="date_ir" required/>
+            <i class="fas fa-calendar-alt"></i>
+          </div>
+
+          <div class="item">
+            <p>Complaint Title</p>
+            <input type="text" name="title" required/>
+          </div>
+
+          <div class="item complaint-details">
+            <p>Complaint details</p>
+            <div class="complaint-details-item">
+              <textarea rows="5" name="body" required></textarea>
+            </div>
+          </div>
+
+          <div class="item desired-outcome">
+            <p>Desired outcome</p>
+            <div class="desired-outcome-item">
+              <textarea rows="5" name="solution"></textarea>
+              <!-- <small>By signing you declare that all information you have entered is truthful and accurate.</small> -->
+            </div>
+          </div>
+          
+          <h4>Your signature</h4>
+          <textarea rows="5"></textarea>
+          <small>By signing you declare that all information you have entered is truthful and accurate.</small>
+          <div class="btn-block">
+            <button type="submit" href="/">Submit</button>
+          </div>
+        </form>
+      </div>
+
+<%- include("partials/footer") %>

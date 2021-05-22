@@ -1,0 +1,221 @@
+/* The navigation bar */
+li i{
+	float: right;
+}
+
+.navbar {
+  height:110px;
+  overflow: hidden;
+  /* background-color: #102952; */
+  background-color: #141414;
+  position: -webkit-sticky; 
+  position: sticky;
+  /* top: 0; */
+  /* position: fixed; Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+}
+.navbar a {
+  float: left;
+  /* display: block; */
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.navbar a:hover {
+  background: #ddd;
+  color: black;
+}
+body{
+  /* background: url("https://i.pinimg.com/originals/45/f6/c5/45f6c57a80bc81c0b2f67a41826130ab.jpg"); */
+  background: url("https://wallpaperaccess.com/full/449895.jpg");
+  /* background: url("https://www.wallpapertip.com/wmimgs/125-1257798_light-blue-wallpaper-hd.jpg"); */
+  /* background: url("https://www.teahub.io/photos/full/278-2789047_light-colour-background-hd.jpg"); */
+  
+  background-size: cover;
+  background-repeat: no-repeat;
+  height:100%;
+  
+  /* margin-top: 500px; */
+  /* overflow: hidden; */
+  /* position: absolute; */
+}
+.vertical-navbar{
+  /* position: fixed; */
+  /* overflow-y: auto; */
+  /* overscroll-behavior-block: scroll; */
+  background-color: #141414;
+  box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+  /* margin: 40px; */
+  margin: 100px 40px 0px 40px;
+  width: 30%;
+  height: 100%;
+
+  /* height:100vh;	 */
+  padding: 10px;
+  text-align: center;
+  backface-visibility:hidden;
+  float: left;
+}
+.vertical-navbar ol{
+  max-height:55vh;
+  overflow:auto
+  /* margin-top:100px */
+  /* position:absolute; */
+}
+.vertical-navbar p{
+	color: #f2f2f2;
+	font-size: 40px;
+}
+.vertical-navbar li{
+	color: #f2f2f2;
+	padding-top: 20px;
+}
+.vertical-navbar a{
+	text-decoration: none;
+}
+.user-complaint-navbar{
+  /* background-color: #005ce6; */
+  background: #085078;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right,#085078, #55d3c4, #085078);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right,#085078, #55d3c4, #085078); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+
+  box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+  margin: 0px auto 40px auto;
+  width: 90%;
+  padding : 20px;
+  /* text-align: left; */
+  margin-top: relative;
+}
+.user-complaint-navbar p{
+  text-decoration: none;
+  padding:0px 50px;
+  font-weight: 500;
+}
+.right{
+  display:block;
+  width:60%;
+  float:left;
+  overflow-y: scroll;
+  height: 70vh;
+  margin-top:100px;
+}
+/* html {
+  overflow:   scroll;
+} */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
+i.fa{
+  /* padding:20px; */
+  margin-right: 10px;
+  font-size: 20px;
+  float:initial;
+}
+i.fa-check{
+  color:rgb(9, 212, 9);
+}
+.name{
+  margin-left: 20px;
+  float: left; 
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+a.new{
+  float: right;
+  margin:2px;
+}
+a.complaint{
+  border:1px solid white;
+}
+
+@media(max-width:800px){
+  .right,.vertical-navbar{
+    width:100%
+  }
+  .right{
+    padding:10px;
+  }
+  .vertical-navbar{
+    margin:0px;
+    padding:20px;
+  }
+  .user-complaint-navbar{
+    width:100%;
+  }
+  a.new{
+    font-size:small;
+    padding:10px
+  }
+  #right{
+    width:40%;
+  }
+  .choose{
+    width:35%;
+  }
+ 
+}
+@media(max-width:1320px){
+  .choose{
+    width:34%;
+  }
+}
+.top{
+  font-weight: 800;
+  text-transform: uppercase;
+  /* text-decoration: underline; */
+}
+.title{
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+
+.toggle{
+  visibility: hidden;
+  opacity: 0;
+  position: relative;
+  z-index: -1;
+}
+.close{
+  float:right;
+  font-size:medium;
+  text-align: center;
+  cursor:pointer;
+}
+.choose{
+  cursor:pointer;
+}
+
+.toggle:checked ~ dialog {
+  display: block;
+}
+
+label{
+  background: skyblue;
+  color: black;
+  width: 20%;
+  padding: .5em 1em;
+  border-radius: 4px;
+}
+@keyframes appear {
+  0%{
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+dialog{
+  /* margin-top:-200px; */
+  padding:50px;
+  margin-top:180px;
+  top:0;
+  animation: appear 350ms ease-in 1;
+  width: 70%;
+  overflow: auto; /* Enable scroll if needed */
+  
+}

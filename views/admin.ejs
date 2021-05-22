@@ -1,0 +1,114 @@
+<%- include("partials/header") %>
+
+    <title>Admin</title>
+    <link rel="stylesheet" type="text/css" href="/css/admin.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+<body>
+    
+    <div class="navbar">
+        <!-- <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#login">LogOut</a>
+        <a href="#contact">Contact</a>  -->
+        <a href="#user" class="name"><i class="fa fa-user"></i><%=name%> - <%=id%></a>
+        <div id="right">
+            <!-- <a href="/complaint/new" class="new complaint"><i class="fa fa-plus"></i>NEW COMPLAINT</a> -->
+            <a href="/" class="new"><i class="fa fa-sign-out" aria-hidden="true"></i>LOGOUT</a>
+        </div>
+
+      </div>
+      <div id="col-name">
+        <h2><%=col.collegename%> - <span style="text-transform: uppercase;">(<%=col.collegeid%>)</span></h2>
+      </div>
+      <div class="vertical-navbar">
+          <p style="border-bottom: 0.5px solid white;">STUDENT GRIEVANCES</p>
+          <ol>
+              <% complaints.forEach(function(comp,n){ %>
+                <li><a href="#<%=n+1%>">GRIEVANCE <%=n+1%> </a>
+                <% if(comp.status==="checked"){%>
+                <i class="fa fa-check" aria-hidden="true"></i>
+                <%}%>
+                </li>
+              <% }); %>
+              <!-- <li><a href="#1">GRIEVANCE 1 &nbsp&nbsp&nbsp</a>&#10004;</li>
+              <li><a href="#2">GRIEVANCE 2 &nbsp&nbsp&nbsp</a></li>
+              <li><a href="#3">GRIEVANCE 3 &nbsp&nbsp&nbsp</a>&#10004;</li>
+              <li><a href="#4">GRIEVANCE 4 &nbsp&nbsp&nbsp</a></li>
+              <li><a href="#5">GRIEVANCE 5 &nbsp&nbsp&nbsp</a></li>
+              <li><a href="#6">GRIEVANCE 6 &nbsp&nbsp&nbsp</a></li> -->
+          </ol>
+      </div>
+      <div class="right">
+        
+        <%var arr=[];%>
+        <%complaints.forEach((c,n)=>{arr[n]=c._id;});%>
+        
+      
+        <% complaints.forEach(function(comp,n){ %>
+            <div class="user-complaint-navbar" id='<%=n+1%>'>
+                <input type="checkbox" id="toggle<%=n%>" class="toggle">
+                <label class="choose" for="toggle<%=n%>"><b>GRIEVANCE <%=n+1%></b></label>
+                <form action="/update/<%=name%>/<%=id%>" method="POST">
+                  <input class="status" name="choice" value="<%=n%>" type="checkbox" <%if(comp.status=="checked"){%>checked<%}%> >
+                  <input type="submit" value="update" <%if(comp.status=="checked"){%>disabled<%}%>>
+                </form>
+                
+                <p><%=comp.title%> </p>
+                <dialog >
+                    <p>
+                      <label class="close" for="toggle<%=n%>">CLOSE</label>
+                      <div class="item">
+                        <h5 class="top"><%=comp.name%></h5>
+                      </div>  
+                      <div class="item">
+                        <h5 class="top"><%=comp.usn%></h5>
+                      </div> 
+                      <hr> 
+                      <div class="item">
+                          <h5><b>Date of complaint :</b> <%=comp.date%></h5>
+                          <!-- <p><%=complaints[n].date%></p> -->
+                         </div>
+                        <div class="item">
+                          <h5><b>Email :</b> <%=comp.email%></h5>
+                          <!-- <p><%=comp.email%></p> -->
+                        </div>
+                        <div class="item">
+                          <h5><b>Date of the reported incident :</b> <%=comp.date_ir%></h5>
+                          <!-- <p><%=comp.date_ir%></p> -->
+                        </div>
+                        <br>
+                        <%categories.forEach(function(category,n){%>
+                          <% if(comp.cid==category.cid){%>
+                            <div class="item">
+                              <h5><b>Category :</b> <%=category.cname%></h5>
+                              <!-- <p><%=comp.date_ir%></p> -->
+                            </div>
+                          <%};%>
+                        <%});%>
+                        
+                        <div class="item">
+                          <h5><b>Complaint details</b></h5>
+                          <p style="text-decoration: underline;"><b><em><%=comp.title%></em></b></p>
+                          <p><%=comp.body%></p>
+                        </div>
+                        <div class="item">
+                          <h5><b>Desired outcome</b></h5>
+                          <p><%=comp.solution%></p>
+                        </div>
+                    </p>
+                    
+                  </dialog>
+            </div>
+        <% }); %>
+        
+
+            <%console.log(arr)%>
+      </div>
+
+      
+    <script src="/js/admin.js"></script>
+
+
+<%- include("partials/footer") %>
+      
