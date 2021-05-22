@@ -14,7 +14,8 @@ app.set("view engine","ejs")
 var mongoose=require("mongoose"); 
 // const { isBuffer } = require("util");
 
-mongoose.connect(process.env.DB_URL || "mongodb://localhost/projectdb",{
+const dbUrl=process.env.DB_URL || "mongodb://localhost/projectdb";
+mongoose.connect(dbUrl,{
     useNewUrlParser:true,
     useUnifiedTopology:true
 })
