@@ -17,7 +17,9 @@ var mongoose=require("mongoose");
 const dbUrl=process.env.DB_URL || "mongodb://localhost/projectdb";
 mongoose.connect(dbUrl,{
     useNewUrlParser:true,
-    useUnifiedTopology:true
+    useUnifiedTopology:true,
+    useCreateIndex:true,
+    useFindAndModify:false
 })
 .then(()=>console.log("Connected to project database"))
 .catch((err)=>console.log("Couldn't connect to database:27017 ",err));
